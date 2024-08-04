@@ -159,7 +159,7 @@ class Queue {
 	print() {
 		let current = this.head;
 		while (current) {
-			console.log(current);
+			console.log(current.data);
 			current = current.next;
 		}
 	}
@@ -172,3 +172,13 @@ queue.enqueue(2);
 queue.enqueue(3);
 queue.dequeue();
 queue.print();
+console.log('--------Queue End--------');
+
+const factorial = function (n) {
+	if (n <= 1) {
+		return 1;
+	}
+	return n * factorial(n - 1);
+};
+
+console.log(factorial(5));
