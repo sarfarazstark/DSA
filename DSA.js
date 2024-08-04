@@ -131,3 +131,44 @@ listD.append(3);
 listD.append(4);
 listD.delete(4);
 listD.print();
+
+console.log('--------DoublyLinkedList End--------');
+
+class Queue {
+	constructor() {
+		this.head = null;
+		this.tail = null;
+	}
+
+	enqueue(data) {
+		const newNode = new Node(data);
+		if (!this.head) {
+			this.head = newNode;
+			this.tail = this.head;
+		} else {
+			this.tail.next = newNode;
+			this.tail = newNode;
+		}
+	}
+
+	dequeue() {
+		// deleting and swapping
+		[this.head.next, this.head] = [null, this.head.next];
+	}
+
+	print() {
+		let current = this.head;
+		while (current) {
+			console.log(current);
+			current = current.next;
+		}
+	}
+}
+
+console.log('--------Queue--------');
+const queue = new Queue();
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+queue.dequeue();
+queue.print();
