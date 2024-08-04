@@ -194,3 +194,20 @@ const fibonacci = function (n) {
 };
 
 console.log(fibonacci(9));
+
+console.log('----Insertion Sorting----');
+
+const insertionSort = function (arr) {
+	for (let i = 1; i < arr.length; i++) {
+		let j = i;
+
+		while (j >= 1 && arr[j - 1] > arr[j]) {
+			[arr[j - 1], arr[j]] = [arr[j], arr[j - 1]];
+			j -= 1;
+		}
+	}
+};
+
+const arr = [5, 2, 6, 2, 8, 9];
+insertionSort(arr);
+console.log(arr);
