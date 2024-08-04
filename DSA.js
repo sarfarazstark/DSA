@@ -174,6 +174,7 @@ queue.dequeue();
 queue.print();
 console.log('--------Queue End--------');
 
+console.log('--Factorial--');
 const factorial = function (n) {
 	if (n <= 1) {
 		return 1;
@@ -182,3 +183,14 @@ const factorial = function (n) {
 };
 
 console.log(factorial(5));
+console.log('--Fibonacci--');
+
+const fibonacci = function (n) {
+	if (n <= 1) {
+		return n;
+	}
+
+	return fibonacci(n - 1) + fibonacci(n - 2);
+};
+
+console.log(fibonacci(9));
