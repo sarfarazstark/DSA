@@ -62,3 +62,72 @@ list.delete(3);
 list.print();
 
 console.log('LinkedList end');
+
+class NodeD {
+	constructor(data) {
+		this.data = data;
+		this.prev = null;
+		this.next = null;
+	}
+}
+
+class DoublyLinkedList {
+	constructor() {
+		this.head = null;
+		this.tail = null;
+	}
+
+	append(data) {
+		const newNode = new NodeD(data);
+		if (!this.head) {
+			this.head = newNode;
+			this.tail = this.head;
+		} else {
+			this.tail.next = newNode;
+			newNode.prev = this.tail;
+			this.tail = this.tail.next;
+		}
+	}
+
+	pop() {
+		this.tail.prev.next = null;
+		this.tail = this.tail.prev;
+	}
+
+	delete(data) {
+		let current = this.head;
+		while (current) {
+			if (current.data === data) {
+				current.prev.next = current.next;
+				if (current.next?.prev) {
+					current.next.prev = current.prev;
+				}
+			}
+			current = current.next;
+		}
+	}
+
+	print(direction = 'head') {
+		let current = this[direction];
+		if (direction === 'head') {
+			while (current) {
+				console.log(current.data);
+				current = current.next;
+			}
+		} else {
+			while (current) {
+				console.log(current.data);
+				current = current.prev;
+			}
+		}
+	}
+}
+
+console.log('--------DoublyLinkedList--------');
+const listD = new DoublyLinkedList();
+listD.append(1);
+listD.append(2);
+listD.append(3);
+listD.append(4);
+listD.delete(4);
+listD.print();
