@@ -211,3 +211,38 @@ const insertionSort = function (arr) {
 const arr = [5, 2, 6, 2, 8, 9];
 insertionSort(arr);
 console.log(arr);
+
+console.log('-----Merge Sort-----');
+
+const merge = function (left, right) {
+	const tempArr = [];
+	let leftIndex = 0;
+	let rightIndex = 0;
+
+	while (leftIndex < left.length && rightIndex < right.length) {
+		if (left[leftIndex] < right[rightIndex]) {
+			tempArr.push(left[leftIndex]);
+			leftIndex++;
+		} else {
+			tempArr.push(right[rightIndex]);
+			rightIndex++;
+		}
+	}
+
+	return [...tempArr, ...left.slice(leftIndex), ...right.slice(rightIndex)];
+};
+
+const mergeSort = function (arr) {
+	if (arr.length <= 1) {
+		return arr;
+	}
+
+	const mid = Math.floor(arr.length / 2);
+	const left = arr.slice(0, mid);
+	const right = arr.slice(mid);
+
+	return merge(mergeSort(left), mergeSort(right));
+};
+
+const arr2 = [5, 2, 6, 2, 8, 9];
+console.log(mergeSort(arr2));
