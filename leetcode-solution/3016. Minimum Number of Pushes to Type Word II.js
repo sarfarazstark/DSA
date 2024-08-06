@@ -2,12 +2,13 @@ const minimumPushes = function (word) {
 	// Count character frequencies
 	const freq = {};
 	for (const char of word) {
+		console.log(char);
 		freq[char] = (freq[char] || 0) + 1;
 	}
 
 	// Get the frequencies and sort them in descending order
 	const sortedFreq = Object.values(freq).sort((a, b) => b - a);
-
+	console.log(sortedFreq);
 	// Calculate the result
 	let result = 0;
 	for (let i = 0; i < sortedFreq.length; i++) {
