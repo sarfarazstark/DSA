@@ -32,42 +32,42 @@ const tens = [
 	'Eighty ',
 	'Ninety ',
 ];
+const scales = ['', 'Thousand ', 'Million ', 'Billion ', 'Trillion '];
 
-const scale = ['', 'Thousand ', 'Million ', 'Billion ', 'Trillion '];
-
-const completeWord = function (num, s = '') {
+const completeWord = (num, scale = '') => {
 	let result = '';
 
-	if (num >= 100) result += ones[Math.floor(num / 100)] + 'Hundred ';
+	const under20 = num % 100;
 
-	if (Math.floor(num % 100) >= 20) {
-		result += tens[Math.floor((num % 100) / 10)] + ones[Math.floor(num % 10)];
+	if (num >= 100) result += ones[Math.floor(num / 100)] + 'Hundred ';
+	if (under20 >= 20) {
+		result += tens[Math.floor(under20 / 10)] + ones[num % 10];
+	} else {
+		result += ones[under20];
 	}
-	if (Math.floor(num % 100) < 20) result += ones[Math.floor(num % 100)];
-	if (num) result += s;
+
+	if (num) result += scale;
 
 	return result;
 };
 
-const numberToWords = function (num) {
+const numberToWords = (num) => {
 	if (num === 0) return 'Zero';
 
-	const segments = num
+	const formatted = num
 		.toString()
-		.split(/(?=(?:\d{3})+$)/)
-		.filter(Boolean);
+		.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+		.split(',');
 
-	const words = segments
+	const words = formatted
 		.reverse()
-		.reduce((acc, number, i) => {
-			acc.push(completeWord(parseInt(number), scale[i]));
-			return acc;
-		}, [])
+		.map((segment, i) => completeWord(parseInt(segment), scales[i]))
 		.reverse();
 
 	return words.join('').trim();
 };
-console.log(numberToWords(1000010));
+
+console.log(numberToWords(1_000_010));
 console.log(numberToWords(1_001));
 console.log(numberToWords(123));
 console.log(numberToWords(100));
