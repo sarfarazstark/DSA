@@ -318,3 +318,19 @@ const pattern16 = function (n) {
 
 console.log('Pattern 16 👇');
 pattern16(5);
+
+const pattern17 = function (n) {
+	for (let i = 0; i <= n; i++) {
+		line = '';
+		for (let j = 0; j < n; j++) {
+			if (i === 0 || i === n || j === 0 || j === n) {
+				line += '*';
+			}
+			line += '\xa0';
+		}
+		console.log(line);
+	}
+};
+
+console.log('Pattern 17 👇');
+pattern17(5);
