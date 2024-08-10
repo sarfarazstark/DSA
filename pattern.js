@@ -320,13 +320,14 @@ console.log('Pattern 16 👇');
 pattern16(5);
 
 const pattern17 = function (n) {
-	for (let i = 0; i <= n; i++) {
+	for (let i = 0; i < n; i++) {
 		line = '';
 		for (let j = 0; j < n; j++) {
-			if (i === 0 || i === n || j === 0 || j === n) {
+			if (i === 0 || i === n - 1 || j === 0 || j === n - 1) {
 				line += '*';
+			} else {
+				line += '\xa0';
 			}
-			line += '\xa0';
 		}
 		console.log(line);
 	}
@@ -334,3 +335,22 @@ const pattern17 = function (n) {
 
 console.log('Pattern 17 👇');
 pattern17(5);
+
+// const pattern18 = function (n) {
+// 	for (let i = 0; i < n * 2 - 1; i++) {
+// 		let line = '';
+// 		let nn = n;
+
+// 		for (let j = 0; j < n * 2 - 1; j++) {
+// 			if (i === j) {
+// 				line += n - j;
+// 			} else {
+// 				line += nn;
+// 			}
+// 		}
+// 		console.log(line);
+// 	}
+// };
+
+// console.log('Pattern 17 👇');
+// pattern18(3);
