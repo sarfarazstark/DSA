@@ -97,7 +97,7 @@ const removeDuplicates = function (nums) {
 		}
 	}
 
-	return k;
+	return nums;
 };
 
 // @lc code=end
