@@ -60,27 +60,28 @@
  * @return {number}
  */
 
-const profit = function (prices, k) {
-	console.log(k);
-	if (prices.length <= 2) {
-		return prices[1] - (prices[0] < 0) ? 0 : prices[1] - prices[0];
+var maxProfit = function (k, prices) {
+	if (prices.length === 1 || k === 0) return 0;
+	if (prices.length === 2) {
+		return prices[1] - prices[0] < 0 ? 0 : prices[1] - prices[0];
 	}
 
-	return profit(prices.slice(k + k), k + k);
-};
-
-var maxProfit = function (k, prices) {
-	const mid = Math.floor();
 	if (k > prices.length) k = prices.length;
 
-	return profit(prices.slice(k), k);
+	let div = 0;
+	const divByK = [];
+	for (let i = 0; i < k; i++) {
+		if (k !== prices.length) divByK.push([]);
+	}
+
+	console.log(divByK);
 };
 
-console.log(maxProfit(1, [1])); // Output: 0
-console.log(maxProfit(0, [1, 5, 3, 8, 4])); // Output: 0
-console.log(maxProfit(1, [1, 5])); // Output: 4
-console.log(maxProfit(100, [1, 2, 3, 4, 5])); // Output: 4
-// console.log(maxProfit(2, [2, 4, 1])); // Output: 2
+// console.log(maxProfit(1, [1])); // Output: 0
+// console.log(maxProfit(0, [1, 5, 3, 8, 4])); // Output: 0
+// console.log(maxProfit(1, [1, 5])); // Output: 4
+// console.log(maxProfit(100, [1, 2, 3, 4, 5])); // Output: 4
+console.log(maxProfit(2, [2, 4, 1])); // Output: 2
 // console.log(maxProfit(2, [5, 3, 1])); // Output: 0
 // console.log(maxProfit(2, [3, 2, 6, 5, 0, 3])); // Output: 7
 // console.log(maxProfit(2, [10, 22, 5, 75, 65, 80])); // Output: 87
