@@ -1,6 +1,5 @@
 const longestCommonSubstr = function (str1, str2) {
 	let maxLength = 0;
-	let endIndex = 0;
 	const dp = Array(str1.length + 1)
 		.fill(null)
 		.map(() => Array(str2.length + 1).fill(0));
@@ -9,13 +8,12 @@ const longestCommonSubstr = function (str1, str2) {
 		for (let j = 1; j <= str2.length; j++) {
 			if (str1[i - 1] === str2[j - 1]) {
 				dp[i][j] = dp[i - 1][j - 1] + 1;
-				if (dp[i][j] > maxLength) {
-					maxLength = dp[i][j];
-					endIndex = i;
-				}
+
+				if (dp[i][j] > maxLength) maxLength = dp[i][j];
 			}
 		}
 	}
+	console.log(dp);
 
 	return maxLength;
 };
